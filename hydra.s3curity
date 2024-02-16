@@ -1,0 +1,110 @@
+#!/bin/bash
+
+source fonctions.1
+source fonctions.2
+source menu.graph
+source 1.verif.hydra
+source 2.wordlists.users
+source 3.wordlists.passwords
+source 4.wordlists.sites
+source 5.ftp
+source 6.ssh
+source 7.smb
+source 8.mysql
+source 9.rdp
+
+# Code couleurs
+	n=$(tput setaf 0)	# Noir
+	r=$(tput setaf 1)	# Rouge
+	v=$(tput setaf 2)	# Vert
+	j=$(tput setaf 3)	# Jaune
+	b=$(tput setaf 4)	# Bleu
+	m=$(tput setaf 5)	# Magenta
+	c=$(tput setaf 6)	# Cyan
+	B=$(tput setaf 7)	# Blanc
+	reset=$(tput sgr0)
+
+while true; do
+clear
+echo
+echo "${m}    ╔────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╗"
+echo "${m}    ║                                                                                                                        ║"
+echo "${m}    ║                                                                                                                        ║"
+echo "${m}    ║  ${b}HHHHHHHHH     HHHHHHHHHYYYYYYY       YYYYYYYDDDDDDDDDDDDD      RRRRRRRRRRRRRRRRR                  AAA                 ${m}║"
+echo "${m}    ║  ${b}H:::::::H     H:::::::HY:::::Y       Y:::::YD::::::::::::DDD   R::::::::::::::::R                A:::A                ${m}║"
+echo "${m}    ║  ${b}H:::::::H     H:::::::HY:::::Y       Y:::::YD:::::::::::::::DD R::::::RRRRRR:::::R              A:::::A               ${m}║"
+echo "${m}    ║  ${b}HH::::::H     H::::::HHY::::::Y     Y::::::YDDD:::::DDDDD:::::DRR:::::R     R:::::R            A:::::::A              ${m}║"
+echo "${m}    ║    ${b}H:::::H     H:::::H  YYY:::::Y   Y:::::YYY  D:::::D    D:::::D R::::R     R:::::R           A:::::::::A             ${m}║"
+echo "${m}    ║    ${b}H:::::H     H:::::H     Y:::::Y Y:::::Y     D:::::D     D:::::DR::::R     R:::::R          A:::::A:::::A            ${m}║"
+echo "${m}    ║    ${b}H::::::HHHHH::::::H      Y:::::Y:::::Y      D:::::D     D:::::DR::::RRRRRR:::::R          A:::::A A:::::A           ${m}║"
+echo "${m}    ║    ${b}H:::::::::::::::::H       Y:::::::::Y       D:::::D     D:::::DR:::::::::::::RR          A:::::A   A:::::A          ${m}║"
+echo "${m}    ║    ${b}H:::::::::::::::::H        Y:::::::Y        D:::::D     D:::::DR::::RRRRRR:::::R        A:::::A     A:::::A         ${m}║"
+echo "${m}    ║    ${b}H::::::HHHHH::::::H         Y:::::Y         D:::::D     D:::::DR::::R     R:::::R      A:::::AAAAAAAAA:::::A        ${m}║"
+echo "${m}    ║    ${b}H:::::H     H:::::H         Y:::::Y         D:::::D     D:::::DR::::R     R:::::R     A:::::::::::::::::::::A       ${m}║"
+echo "${m}    ║    ${b}H:::::H     H:::::H         Y:::::Y         D:::::D    D:::::D R::::R     R:::::R    A:::::AAAAAAAAAAAAA:::::A      ${m}║"
+echo "${m}    ║  ${b}HH::::::H     H::::::HH       Y:::::Y       DDD:::::DDDDD:::::DRR:::::R     R:::::R   A:::::A             A:::::A     ${m}║"
+echo "${m}    ║  ${b}H:::::::H     H:::::::H    YYYY:::::YYYY    D:::::::::::::::DD R::::::R     R:::::R  A:::::A               A:::::A    ${m}║"
+echo "${m}    ║  ${b}H:::::::H     H:::::::H    Y:::::::::::Y    D::::::::::::DDD   R::::::R     R:::::R A:::::A                 A:::::A   ${m}║"
+echo "${m}    ║  ${b}HHHHHHHHH     HHHHHHHHH    YYYYYYYYYYYYY    DDDDDDDDDDDDD      RRRRRRRR     RRRRRRRAAAAAAA             v1.0  AAAAAAA  ${m}║"
+echo "${m}    ║                                                                                                                        ║"
+echo "    ║                                                                                                                        ║"
+echo "    ║${B}           .d8888b.   ${r}.d8888b.${B}                            d8b 888                 d8b           .d888                   ${m}║"
+echo "    ║${B}          d88P  Y88b ${r}d88P  Y88b${B}                           Y8P 888                 Y8P          d88P\"                    ${m}║"
+echo "    ║${B}          Y88b.           ${r}.d88P${B}                               888                              888                      ${m}║"
+echo "    ║${B}           \"Y888b.       ${r}8888\"${B}   .d8888b 888  888 888d888 888 888888 888  888     888 88888b.  888888 .d88b.            ${m}║"
+echo "    ║${B}              \"Y88b.      ${r}\"Y8b.${B} d88P\"    888  888 888P\"   888 888    888  888     888 888 \"88b 888   d88\"\"88b           ${m}║"
+echo "    ║${B}                \"888 ${r}888    888${B} 888      888  888 888     888 888    888  888     888 888  888 888   888  888           ${m}║"
+echo "    ║${B}          Y88b  d88P ${r}Y88b  d88P${B} Y88b.    Y88b 888 888     888 Y88b.  Y88b 888 ${r}d8b${reset} 888 888  888 888   Y88..88P           ${m}║"
+echo "    ║${B}           \"Y8888P\"   ${r}\"Y8888P\"${B}   \"Y8888P  \"Y88888 888     888  \"Y888  \"Y88888 ${r}Y8P${reset} 888 888  888 888    \"Y88P\"            ${m}║"
+echo "    ║${B}                                                                          888                                           ${m}║"
+echo "    ║${B}                                                                     Y8b d88P                     ${r}by PhOeNiX            ${m}║"
+echo "    ║${B}                                                                      \"Y88P\"                                            ${m}║"
+echo "    ║                                                                                                                        ║"
+echo "    ║                                                                                                                        ║"
+echo "    ║                                                                                                                        ║"
+echo "    ║                                   ${B}[${r}1${B}] Vérification de la présence d'Hydra sur le système                               ${m}║"
+echo "    ║                                   ${B}[${r}2${B}] Téléchargement de dictionnaires - Users                                          ${m}║"
+echo "    ║                                   ${B}[${r}3${B}] Téléchargement de dictionnaires - Passwords                                      ${m}║"
+echo "    ║                                   ${B}[${r}4${B}] Sites pour télécharger une multitude de dictionnaires                            ${m}║"
+echo "    ║                                                                                                                        ║"
+echo "    ║                                   ${B}[${r}5${B}] Cracker FTP                                                                      ${m}║"
+echo "    ║                                   ${B}[${r}6${B}] Cracker SSH                                                                      ${m}║"
+echo "    ║                                   ${B}[${r}7${B}] Cracker SMB                                                                      ${m}║"
+echo "    ║                                   ${B}[${r}8${B}] Cracker MySQL                                                                    ${m}║"
+echo "    ║                                   ${B}[${r}9${B}] Cracker RDP                                                                      ${m}║"
+echo "    ║                                                                                                                        ║"
+echo "    ║                                   ${B}[${r}0${B}] Exit                                                                             ${m}║"
+echo "    ║                                                                                       ${r}YouTube ${B}: PhOeNiX ${r}v8.3           ${m}║"
+echo "    ║                                                                                       ${v}Web     ${B}: S3curity${v}.info          ${m}║"
+echo "    ║                                                                                       ${c}Contact ${B}: phoenix${c}@${B}s3curity.info  ${m}║"
+echo "    ║                                                                                                                        ║"
+echo "    ╚────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╝${reset}"
+echo
+read -p "          Veuillez saisir votre choix : " choix
+
+
+# Appel des fonctions #
+case "$choix" in
+        1) vh
+        ;;
+				2) wu
+				;;
+				3) wp
+				;;
+				4) gw
+				;;
+				5) ftp
+				;;
+				6) ssh
+				;;
+				7) smb
+				;;
+				8) mysql
+				;;
+				9) rdp
+				;;
+        0) quit
+        ;;
+        *) other
+esac
+done

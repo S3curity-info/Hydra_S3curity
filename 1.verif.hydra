@@ -1,0 +1,83 @@
+# a) Vérifier la présence d'Hydra sur le système
+        vh() {
+                gv
+                echo
+                echo
+                if ! command -v hydra &> /dev/null; then
+                        read -p "          Hydra non présent, souhaitez-vous l'installer ? [${v}oui${reset}/${r}non${reset}] : " oui
+                        if [ "$oui" = oui ]; then
+                                gv
+                                echo
+                                echo
+                                echo "          Il est préférable de mettre à jour votre système"
+                                echo
+                                read -p "          Souhaitez-vous mettre à jour votre système avant ? [${v}oui${reset}/${r}non${reset}] : " oui
+                                        if [ "$oui" = oui ]; then
+                                                gv
+                                                echo
+                                                echo
+                                                echo "          Etape 1/2"
+                                                echo "          Mise à jour du système en cours, veuillez patienter ..."
+                                                sudo apt update &> /dev/null
+                                                echo
+                                                echo "          Etape 2/2"
+                                                echo "          Mise à jour du système en cours, veuillez patienter ..."
+                                                sudo apt upgrade -y &> /dev/null
+                                                echo
+                                                echo "          Installation de Hydra en cours, veuillez patienter ..."
+                                                sudo apt install hydra -y &> /dev/null
+                                                echo
+                                                if ! command -v hydra &> /dev/null; then
+                                                echo "          ${r}Soucis lors de l'installation, veuillez recommencer${reset}"
+                                                echo
+                                                entree
+                                                else
+                                                echo "          ${v}Hydra a été installé correctement${reset}"
+                                                echo
+                                                entree
+                                                fi
+                                        elif [ "$oui" = "non" ]; then
+                                                gv
+                                                echo
+                                                echo
+                                                echo "          Installation seulement de Hydra ..."
+                                                sudo apt install hydra -y &> /dev/null
+                                                echo
+                                                if ! command -v hydra &> /dev/null; then
+                                                echo "          ${r}Soucis lors de l'installation, veuillez recommencer${reset}"
+                                                echo
+                                                entree
+                                                else
+                                                echo "          ${v}Hydra a été installé correctement${reset}"
+                                                echo
+                                                entree
+                                                fi
+                                        else
+                                                gv
+                                                echo
+                                                echo
+                                                echo "          ${r}Mauvais choix, retour au menu principal${reset}"
+                                                echo
+                                                entree
+                                        fi
+                        elif [ "$oui" = "non" ]; then
+                                gv
+                                echo
+                                echo
+                                echo "          ${r}Ok, Hydra ne sera pas installé${reset}"
+                                echo
+                                entree
+                        else
+                                gv
+                                echo
+                                echo
+                                echo "          ${r}Mauvais choix, retour au menu principal${reset}"
+                                echo
+                                entree
+                        fi
+                else
+                echo "          Hydra présent sur votre machine, amusez-vous bien avec ce script"
+                echo
+                entree
+                fi
+        }

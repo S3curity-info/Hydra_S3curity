@@ -1,0 +1,77 @@
+# Demande chemin dictionnaire utilisateur
+get_custom_user_dict() {
+        while true; do
+                read -p "          Veuillez saisir le chemin complet du dictionnaire pour l'utilisateur : " custom_user_dict
+                if [ -f "$custom_user_dict" ]; then
+                        break
+                else
+                        echo "          ${r}Dictionnaire non trouvé${reset}"
+                        read -p "          Souhaitez-vous recommencer (${v}1${reset}) ou revenir au menu principal (${r}2${reset}) ? [${v}1${reset}/${r}2${reset}] " retry_user
+                        case $retry_user in
+                                1)
+                # Recommencer la saisie
+                                        continue ;;
+                                2)
+                # Revenir au menu principal
+                                        entree ;;
+                                *)
+                                        echo
+                                        echo "          ${r}Réponse non valide, retour au menu principal${reset}"
+                                        echo
+                                        entree ;;
+                        esac
+                fi
+        done
+        user_command="-P $custom_user_dict"
+}
+
+# Demande chemin dictionnaire mot de passe
+get_custom_pass_dict() {
+        while true; do
+                read -p "          Veuillez saisir le chemin complet du dictionnaire pour le mot de passe : " custom_pass_dict
+                if [ -f "$custom_pass_dict" ]; then
+                        break
+                else
+                        echo "          ${r}Dictionnaire non trouvé${reset}"
+                        read -p "          Souhaitez-vous recommencer (${v}1${reset}) ou revenir au menu principal (${r}2${reset}) ? [${v}1${reset}/${r}2${reset}] " retry_pass
+                        case $retry_pass in
+                                1)
+                # Recommencer la saisie
+                                        continue ;;
+                                2)
+                # Revenir au menu principal
+                                        entree ;;
+                                *)
+                                        echo
+                                        echo "          ${r}Réponse non valide, retour au menu principal${reset}"
+                                        echo
+                                        entree ;;
+                        esac
+                fi
+        done
+        pass_command="-P $custom_pass_dict"
+}
+
+# Vérif présence rockyou.txt #####
+verif_rockyou() {
+        if [ ! -f "$rockyou" ]; then
+                echo
+                echo "          Le fichier dictionnaire Rockyou.txt n'est pas présent"
+                read -p "          Voulez-vous le télécharger ? [${v}oui${reset}/${r}non${reset}] : " download_rockyou
+
+                if [ "$download_rockyou" = "oui" ]; then
+
+# Télécharger rockyou.txt
+                        clear
+                        echo
+                        echo "          Téléchargement de Rockyou.txt en cours, veuillez patienter ..."
+                        sudo wget -O rockyou.txt.tar.gz https://github.com/zacheller/rockyou/raw/master/rockyou.txt.tar.gz > /dev/null 2>&1 && sudo tar -xzvf rockyou.txt.tar.gz > /dev/nu>                        clear
+                else
+                        echo
+                        echo "          ${r}Le téléchargement de Rockyou.txt a été annulé, retour au menu principal${reset}"
+                        echo
+                        entree
+                        return
+                fi
+        fi
+}

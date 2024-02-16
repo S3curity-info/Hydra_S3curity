@@ -1,0 +1,86 @@
+# d) Sites WordLists
+
+# SecList (danielmiessler)
+cw1() {
+clear
+echo
+echo
+echo "${m}    ╔──────────────────────────────────────────────────────────╗"
+echo "    ║                                                          ║"
+echo "    ║  ${b}https://github.com/danielmiessler/SecLists/tree/master  ${m}║"
+echo "    ║                                                          ║"
+echo "    ╚──────────────────────────────────────────────────────────╝${reset}"
+echo
+precedent_menu
+}
+
+# RockYou 2021 (ohmybahgosh)
+cw2() {
+clear
+echo
+echo
+echo "${m}    ╔──────────────────────────────────────────────────╗"
+echo "    ║                                                  ║"
+echo "    ║  ${b}https://github.com/ohmybahgosh/RockYou2021.txt  ${m}║"
+echo "    ║                                                  ║"
+echo "    ╚──────────────────────────────────────────────────╝${reset}"
+echo
+precedent_menu
+}
+
+# Wordlist (kkrypt0nn)
+cw3() {
+clear
+echo
+echo
+echo "${m}    ╔──────────────────────────────────────────╗"
+echo "    ║                                          ║"
+echo "    ║  ${b}https://github.com/kkrypt0nn/wordlists  ${m}║"
+echo "    ║                                          ║"
+echo "    ╚──────────────────────────────────────────╝${reset}"
+echo
+precedent_menu
+}
+
+# Awesome Wordlists (gmelodie)
+cw4() {
+clear
+echo
+echo
+echo "${m}    ╔─────────────────────────────────────────────────╗"
+echo "    ║                                                 ║"
+echo "    ║  ${b}https://github.com/gmelodie/awesome-wordlists  ${m}║"
+echo "    ║                                                 ║"
+echo "    ╚─────────────────────────────────────────────────╝${reset}"
+echo
+precedent_menu
+}
+
+
+# Most common wordlists (david-palma)
+cw5() {
+clear
+echo
+echo
+echo "${m}    ╔────────────────────────────────────────────╗"
+echo "    ║                                            ║"
+echo "    ║  ${b}https://github.com/david-palma/wordlists  ${m}║"
+echo "    ║                                            ║"
+echo "    ╚────────────────────────────────────────────╝${reset}"
+echo
+precedent_menu
+}
+
+# Gobuster Wordlists
+cw6() {
+clear
+echo
+echo
+echo "${m}    ╔───────────────────────────────────────────────╗"
+echo "    ║                                               ║"
+echo "    ║  ${b}https://github.com/topics/gobuster-wordlist  ${m}║"
+echo "    ║                                               ║"
+echo "    ╚───────────────────────────────────────────────╝${reset}"
+echo
+precedent_menu
+}

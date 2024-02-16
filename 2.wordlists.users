@@ -1,0 +1,135 @@
+# b) Wordlists Users
+s3curity="/usr/share/wordlists/S3curity.info/"
+usernames="/usr/share/wordlists/S3curity.info/Usernames/"
+fu1="top-usernames-shortlist.txt"
+fu2="mssql-usernames-nansh0u-guardicore.txt"
+fu3="sap-default-usernames.txt"
+fu4="cirt-default-usernames.txt"
+fu5="xato-net-10-million-usernames-dup.txt"
+fu6="xato-net-10-million-usernames.txt"
+
+# top-usernames-shortlist
+cu1() {
+clear
+        v_s3curity
+        v_usernames
+        if [ -e "$usernames""$fu1" ]; then
+                clear
+                echo
+                echo "          ${v}Le fichier est déjà présent dans $usernames${reset}"
+                echo
+        else
+                sudo wget -O "$usernames""$fu1" https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt
+                clear
+                echo
+                echo "          ${v}Le fichier à bien été téléchargé dans $usernames${reset}"
+                echo
+        fi
+        echo "          Retour au menu principal"
+        entree
+}
+
+# mssql-usernames-nansh0u-guardicore
+cu2() {
+clear
+        v_s3curity
+        v_usernames
+        if [ -e "$usernames""$fu2" ]; then
+                clear
+                echo
+                echo "          ${v}Le fichier est déjà présent dans $usernames${reset}"
+                echo
+        else
+                sudo wget -O "$usernames""$fu2" https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/mssql-usernames-nansh0u-guardicore.txt
+                clear
+                echo
+                echo "          ${v}Le fichier à bien été téléchargé dans $usernames${reset}"
+                echo
+        fi
+        echo "          Retour au menu principal"
+        entree
+}
+
+# sap-default-usernames
+cu3() {
+clear
+        v_s3curity
+        v_usernames
+        if [ -e "$usernames""$fu3" ]; then
+                clear
+                echo
+                echo "          ${v}Le fichier est déjà présent dans $usernames${reset}"
+                echo
+        else
+                sudo wget -O "$usernames""$fu3" https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/sap-default-usernames.txt
+                clear
+                echo
+                echo "          ${v}Le fichier à bien été téléchargé dans $usernames${reset}"
+                echo
+        fi
+        echo "          Retour au menu principal"
+        entree
+}
+
+# cirt-default-usernames
+cu4() {
+clear
+        v_s3curity
+        v_usernames
+        if [ -e "$usernames""$fu4" ]; then
+                clear
+                echo
+                echo "          ${v}Le fichier est déjà présent dans $usernames${reset}"
+                echo
+        else
+                sudo wget -O "$usernames""$fu4" https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/cirt-default-usernames.txt
+                clear
+                echo
+                echo "          ${v}Le fichier à bien été téléchargé dans $usernames${reset}"
+                echo
+        fi
+        echo "          Retour au menu principal"
+        entree
+}
+
+# xato-net-10-million-usernames-dup
+cu5() {
+clear
+        v_s3curity
+        v_usernames
+        if [ -e "$usernames""$fu5" ]; then
+                clear
+                echo
+                echo "          ${v}Le fichier est déjà présent dans $usernames${reset}"
+                echo
+        else
+                sudo wget -O "$usernames""$fu5" https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/xato-net-10-million-usernames-dup.txt
+                clear
+                echo
+                echo "          ${v}Le fichier à bien été téléchargé dans $usernames${reset}"
+                echo
+        fi
+        echo "          Retour au menu principal"
+        entree
+}
+
+# xato-net-10-million-usernames
+cu6() {
+clear
+        v_s3curity
+        v_usernames
+        if [ -e "$usernames""$fu6" ]; then
+                clear
+                echo
+                echo "          ${v}Le fichier est déjà présent dans $usernames${reset}"
+                echo
+        else
+                sudo wget -O "$usernames""$fu6" https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/xato-net-10-million-usernames.txt
+                clear
+                echo
+                echo "          ${v}Le fichier à bien été téléchargé dans $usernames${reset}"
+                echo
+        fi
+        echo "          Retour au menu principal"
+        entree
+}

@@ -1,0 +1,87 @@
+# Appuyer sur entrée pour continuer
+entree() {
+        read -p "          Appuyez sur Entrée pour continuer..."
+        exec "$0"
+}
+
+# Retour au menu principal
+menu_principal() {
+        exec "$0"
+}
+
+# Précédent ou Menu principal
+precedent_menu() {
+        echo
+        echo "          Retour arrière [${v}1${reset}]"
+        echo "          Retour au menu principal [${r}0${reset}]"
+        echo
+        read -p "          Faites votre choix : " pm
+        echo
+                case "$pm" in
+                1) ww
+                ;;
+                0) menu_principal
+                ;;
+                *) other
+                esac
+}
+
+# Vérif présence dossier S3curity.info
+v_s3curity() {
+        if [ ! -d "$s3curity" ]; then
+        sudo mkdir "$s3curity"
+        fi
+}
+
+# Vérif présence dossier Usernames
+v_usernames() {
+        if [ ! -d "$usernames" ]; then
+        sudo mkdir "$usernames"
+        fi
+}
+
+# Vérif présence dossier Passwords
+v_passwords() {
+        if [ ! -d "$passwords" ]; then
+        sudo mkdir "$passwords"
+        fi
+}
+
+# Quitter le script
+quit() {
+        clear
+        echo
+        echo "${m}    ╔────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╗"
+        echo "    ║                                                                                                                        ║"
+        echo "    ║${b}      ooo        ooooo                               o8o                                                                ${m}║"
+        echo "    ║${b}      \`88.       .888'                               \`\"'                                                                ${m}║"
+        echo "    ║${b}       888b     d'888   .ooooo.  oooo d8b  .ooooo.  oooo                                                                ${m}║"
+        echo "    ║${b}       8 Y88. .P  888  d88' \`88b \`888\"\"8P d88' \`\"Y8 \`888                                                                ${m}║"
+        echo "    ║${b}       8  \`888'   888  888ooo888  888     888        888                                                                ${m}║"
+        echo "    ║${b}       8    Y     888  888    .o  888     888   .o8  888                                                                ${m}║"
+        echo "    ║${b}      o8o        o888o \`Y8bod8P' d888b    \`Y8bod8P' o888o                                                               ${m}║"
+        echo "    ║                                                                                                                        ║"
+        echo "    ║${b}                                                                                                     o8o                ${m}║"
+        echo "    ║${b}                                                                                                     \`\"'                ${m}║"
+        echo "    ║${b}                                   .oooo.   oooo  oooo     oooo d8b  .ooooo.  oooo    ooo  .ooooo.  oooo  oooo d8b      ${m}║"
+        echo "    ║${b}                                  \`P  )88b  \`888  \`888     \`888\"\"8P d88' \`88b  \`88.  .8'  d88' \`88b \`888  \`888\"\"8P      ${m}║"
+        echo "    ║${b}                                   .oP\"888   888   888      888     888ooo888   \`88..8'   888   888  888   888          ${m}║"
+        echo "    ║${b}                                  d8(  888   888   888      888     888    .o    \`888'    888   888  888   888          ${m}║"
+        echo "    ║${b}                                  \`Y888\"\"8o  \`V88V\"V8P'    d888b    \`Y8bod8P'     \`8'     \`Y8bod8P' o888o d888b         ${m}║"
+        echo "    ║                                                                                                                        ║"
+        echo "    ║                                                                                                                        ║"
+        echo "    ╚────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╝${reset}"
+        echo
+        sleep 3
+        clear
+        exit 1
+}
+
+# Si un mauvais choix est saisi
+other() {
+        clear
+        echo
+        echo "          ${r}L'option choisie n'est pas la bonne, retour au menu principal${reset}"
+        echo
+        entree
+}

