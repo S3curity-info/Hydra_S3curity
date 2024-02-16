@@ -18,7 +18,7 @@ N'hésitez pas à me faire vos retours pour m'améliorer et également en cas de
 
 ```bash
 git clone https://github.com/S3curity-info/Hydra_S3curity.git
-cd Hydra_S2curity
+cd Hydra_S3curity
 chmod u+x hydra.s3curity
 ./hydra.s3curity
 ```
