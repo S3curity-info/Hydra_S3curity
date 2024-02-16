@@ -7,7 +7,7 @@
     
 Salut à toutes et à tous,
 
-Je suis extrêmement fier de vous présenter ce script Bash que j'ai créé afin de faciliter les débutants dans l'utilisation de Hydra.
+Je suis extrêmement fier de vous présenter ce script Bash que j'ai créé afin de faciliter les débutants dans l'utilisation de Hydra.  
 Débutant dans ce langage, j'ai essayé d'optimiser au mieux mon code et l'interaction que l'utilisateur pourra avoir pour son utilisation.
 
 N'hésitez pas à me faire vos retours pour m'améliorer et également en cas de bugs que je rectifie ça
