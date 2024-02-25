@@ -25,4 +25,4 @@ chmod u+x hydra.s3curity
 
 
 ## YouTube
-[![CRACKER LES MOTS DE PASSE FACILEMENT AVEC HYDRA](LIEN_MINIATURE)](LIEN_YT)
+[![CRACKER AVEC HYDRA + SCRIPT PERSO](https://s3curity.info/wp/wp-content/uploads/2024/02/Miniature-Video-1.jpg)](https://youtu.be/IvBCP2qp4Y4)
