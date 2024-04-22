@@ -22,3 +22,5 @@ cd Hydra_S3curity
 chmod u+x hydra.s3curity
 ./hydra.s3curity
 ```
+## YouTube
+[![HYDRA + SCRIPT PERSO](https://s3curity.info/wp/wp-content/uploads/2024/02/Miniature-Video-1.jpg)](https://youtu.be/xy74ABFScgw)
